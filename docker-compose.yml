@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: todo_web_app
+    volumes:
+      - ./:/var/www/html:cached   # mount project into container (live code)
+    ports:
+      - "8081:80"                 # maps host:8081 -> container:80
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASS: rootpassword
+      DB_NAME: todo_web
+      DB_PORT: 3306
+
+  db:
+    image: mysql:8.0
+    container_name: todo_web_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: todo_web
+      # Optionally create a non-root user:
+      # MYSQL_USER: todo_user
+      # MYSQL_PASSWORD: todo_pass
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: todo_phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
