@@ -1,4 +1,3 @@
--- db/init.sql
 CREATE DATABASE IF NOT EXISTS `todo_web` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `todo_web`;
 

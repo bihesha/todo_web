@@ -4,7 +4,7 @@ async function fetchTasks() {
         const res = await fetch('api/get_tasks.php');
         if (!res.ok) throw new Error('Network response not ok');
 
-        const tasks = await res.json(); // make sure PHP returns JSON
+        const tasks = await res.json(); 
         const list = document.getElementById('taskList');
         list.innerHTML = '';
 
@@ -42,7 +42,6 @@ document.getElementById('taskForm').addEventListener('submit', async function(e)
             // Clear form
             this.reset();
 
-            // Show SweetAlert2 popup
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
@@ -50,8 +49,7 @@ document.getElementById('taskForm').addEventListener('submit', async function(e)
                 timer: 2000,
                 showConfirmButton: false
             });
-
-            // Reload tasks from backend
+            
             fetchTasks();
         } else {
             Swal.fire('Error', data.error || 'Failed to add task', 'error');

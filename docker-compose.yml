@@ -7,9 +7,9 @@ services:
       dockerfile: Dockerfile
     container_name: todo_web_app
     volumes:
-      - ./:/var/www/html:cached   # mount project into container (live code)
+      - ./:/var/www/html:cached   
     ports:
-      - "8081:80"                 # maps host:8081 -> container:80
+      - "8081:80"                 
     depends_on:
       - db
     environment:
@@ -26,9 +26,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: todo_web
-      # Optionally create a non-root user:
-      # MYSQL_USER: todo_user
-      # MYSQL_PASSWORD: todo_pass
     volumes:
       - db_data:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro

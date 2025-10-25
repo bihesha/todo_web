@@ -125,7 +125,6 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Title */
 .task h3 {
     color: #2c3e50;
     font-size: 1.22em;
@@ -134,18 +133,16 @@ button:hover {
     line-height: 1.35;
 }
 
-/* Description - wraps to multiple lines */
 .task p {
     color: #5a6c7d;
     font-size: 0.95em;
     margin: 0;
-    line-height: 1.5;         /* Show up to 3 lines */
+    line-height: 1.5;         
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Done Button - right-aligned, below description */
 .task button {
     align-self: flex-end;
     background: #007bff;
