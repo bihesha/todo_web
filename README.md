@@ -71,5 +71,54 @@ docker-compose down -v
 - Environment-based DB config
 - Full Docker + phpMyAdmin support
 
+## 🧭 Backend Unit Tests and Integration Tests Instruction
+
+### 1. Install PHPUnit
+
+```bash
+# In project root
+composer require --dev phpunit/phpunit
+```
+
+### 2. Run Backend Unit Tests
+
+```bash
+# Database Test
+vendor/bin/phpunit --testdox tests/DatabaseTest.php
+
+# AddTaskTest
+vendor/bin/phpunit --testdox tests/AddTaskTest.php
+
+# GetTasksTest
+vendor/bin/phpunit --testdox tests/GetTasksTest.php
+
+# MarkDoneTest
+vendor/bin/phpunit --testdox tests/MarkDoneTest.php
+```
+
+### 3. Run Backend Integration Test
+
+```bash
+# install composer guzzle
+composer require guzzlehttp/guzzle --dev
+
+# Backend Integration Test
+vendor/bin/phpunit tests/IntegrationTest.php --testdox
+```
+
+### 4. Run Frontend Unit Test
+
+```bash
+# install npm
+npm init -y
+npm install --save-dev jest
+
+# jest-environment-jsdom
+npm install --save-dev jest-environment-jsdom
+# you need change script like "test": "tests"
+
+# Run npm Test
+npm test
+```
 
 **Enjoy managing your tasks!** 🚀
