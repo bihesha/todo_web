@@ -1,0 +1,1 @@
+{"version":1,"defects":{"DatabaseTest::testConnectionSuccess":7,"GetTasksTest::testFetchPendingTasks":5,"MarkDoneTest::testMarkDone":5,"IntegrationTest::testAddAndFetchTasksFlow":8},"times":{"DatabaseTest::testConnectionSuccess":0.014,"GetTasksTest::testFetchPendingTasks":0.019,"MarkDoneTest::testMarkDone":0.02,"IntegrationTest::testAddAndFetchTasksFlow":0.174}}
